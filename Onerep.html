@@ -1,0 +1,110 @@
+<!-- Jerry, Ive left some comments here that will hopefully help -->
+
+
+<!-- FIRST THING -->
+<!-- File Structure is important! -->
+<!-- Ive restructured your file accordingly -->
+  <!-- Style Code -->
+  <!-- JavaScript -->
+  <!-- HTML Code -->
+<!-- This did not fix your errors, but it is useful to keep track of what you are coding -->
+
+<!-- this is where the file contents should start -->
+<html> 
+  <body>
+
+
+    <!-- styles FIRST so the page knows what styles to render before the HTML is read-->
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+    </style>
+
+
+
+    <!-- Followed by any functions you want to include or any elements added via JS-->
+    <script>
+      function calculateMAX() {
+        // Using console.log is a way to see whats going on in your javascript
+        // as you inspect your javascript, flip over to the "Console" tab to see results
+        console.log('--Calculate Max--');
+
+        // document.getElementById looks for an HTML element which has an ID attrubute EG: 'id=<id name>' 
+        // your HTML code does not provide any elements with id attributes of weight and reps!! 
+        // your following two HTML elements have only type attributes and name attributes...
+
+        var weight = document.getElementById('weight').value; // there is no element with an id of weight!
+        var reps = document.getElementById('reps').value; // there is no element with an id of reps!
+
+        var newonerep = document.getElementById('newonerep'); // this code is great!
+
+        var percent = (100 - 2.5 * reps) / 100; 
+        // the above code is where the errors occur
+        // Hint #1: look into parseInt()
+          // parseInt() will turn any string numerical value to an integer
+          // look into the VALUE of each element to see what is typed in the form 
+          // reps at this point in the program is simply the HTML element that is a form
+          // reps.value will be the data that is placed inside the form input
+          // parseInt(reps.value) will get you a INTEGER value that can be used for arithmetic
+          // you must do the same with weight
+
+        var onerep = weight / percent; // this does not need to change, as long as the percent is updated
+
+        // here is a console.log of what your code shows currently
+        console.log(weight); // take a look at what weight is ... after you fix the HTML this should change!
+        console.log(reps); // take a look at what reps are ... after you fix the HTML this should change!
+        console.log(percent); // take a look at what percent is ... after you fix the percent variable this should change!
+        console.log(onerep); // take a look at what onerep is... after you fix the percent variable this should change!
+
+        newonerep.innerHTML = Math.round(onerep); // this code is great!
+        
+      }
+    </script>
+
+
+
+    <!-- And finally the code that will display items on the screen -->
+    <h1 align="center">The Mecca</h1>
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="Onerep.html">One Rep</a></li>
+      <li><a href="Generator.html">Workout Generator</a></li>
+      <li><a href="Workout.html">Workout</a></li>
+    </ul>
+    <form>
+      Reps:<br />
+      <!-- You need to add an ID attribute to these inputs so they can be accessed by your JS -->
+      <input type="int" name="reps" id="reps"/>
+      <br />
+      Weight:<br />
+      <input type="int" name="weight" id="weight"/>
+      <br /><br />
+    </form>
+    <form>
+      <!-- this code is great! -->
+      <div id="Calculate" onclick="calculateMAX()">Calculate</div>
+      <div id="newonerep"></div>
+    </form>
+  </body>
+</html>
